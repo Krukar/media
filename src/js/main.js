@@ -1,22 +1,39 @@
 ///<reference path="jquery.d.ts" />
-///<reference path="snapsvg.d.ts" />
 'use strict';
 $(document).ready(() => {
-    var media = Snap('#svgMedia');
-    var days = getDays();
-    for (var i = 0; i < days; i++) {
-        var day = media.rect((i * 25), 0, 25, 25);
+    let list = $('#days');
+    let total = getDays();
+    let days = '';
+    for (let i = 0; i < total; i++) {
+        let cssClass = 'day';
+        let day = '<li class="' + cssClass + '"></li>';
+        days += day;
     }
-    ;
-    // $.getJSON('data/media.json', function(data) {
-    // 	console.log(data)
-    // });
+    list.html(days);
+    $.getJSON('data/media.json', function (data) {
+        data.books.forEach(function (book) {
+            let date = new Date(book.date);
+            let dayNumber = getDayNumber(date);
+            $('li:eq(' + dayNumber + ')', list).addClass('book');
+        });
+        data.games.forEach(function (game) {
+            let date = new Date(game.date);
+            let dayNumber = getDayNumber(date);
+            $('li:eq(' + dayNumber + ')', list).addClass('game');
+        });
+        data.movies.forEach(function (movie) {
+            let date = new Date(movie.date);
+            let dayNumber = getDayNumber(date);
+            $('li:eq(' + dayNumber + ')', list).addClass('movie');
+        });
+    });
 });
 function getDays() {
-    var day = 24 * 60 * 60 * 1000;
-    var startDate = new Date(2013, 0, 1);
-    var endDate = new Date((new Date().getFullYear() + 1), 0, 1);
-    var total = Math.round(Math.abs((startDate.getTime() - endDate.getTime()) / (day)));
+    let total = Math.round(Math.abs((new Date(2013, 0, 1).getTime() - new Date((new Date().getFullYear() + 1), 0, 1).getTime()) / (24 * 60 * 60 * 1000)));
     return total;
+}
+function getDayNumber(date) {
+    let day = Math.round(Math.abs((new Date(2013, 0, 1).getTime() - date.getTime()) / (24 * 60 * 60 * 1000)));
+    return day;
 }
 console.log('main.ts');
