@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
 sass = require('gulp-sass'),
+autoprefixer = require('gulp-autoprefixer'),
 ts = require('gulp-typescript'),
 concat = require('gulp-concat'),
 uglify = require('gulp-uglify');
@@ -12,12 +13,16 @@ gulp.task('css', function () {
 		outputStyle: 'compressed'
 	})
 	.on('error', sass.logError))
+	.pipe(autoprefixer({
+		browsers: ['last 2 versions'],
+		cascade: false
+	}))
 	.pipe(gulp.dest('../'));
 });
 
 // TS -> JS
 gulp.task('ts', function () {
-	return gulp.src('./js/**/*.ts')
+	return gulp.src('./ts/**/*.ts')
 	.pipe(ts({
 		noImplicitAny: true,
 		out: 'main.js',
@@ -37,5 +42,5 @@ gulp.task('js', ['ts'], function() {
 
 gulp.task('default', ['css', 'js'], function() {
 	gulp.watch(['./scss/**/*.scss'], ['css']);  
-	gulp.watch(['./js/**/*.ts'], ['js']);
+	gulp.watch(['./ts/**/*.ts'], ['js']);
 });

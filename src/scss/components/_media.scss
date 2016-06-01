@@ -1,22 +1,17 @@
-#days{
-	@include outer-container;
+#media{
+	display: flex;   
+	&:hover{
+		.book, .game, .movie{
+			opacity: 0.6;
+		}
+	}
 	.day{
-		@include span-columns(1, block-collapse);  
-
-		height: 1.75rem;
-		border-bottom: solid thin $black;
-		border-right: solid thin $black;
-
-		&:nth-child(-n+29){
-			border-top: solid thin $black;
-		}
-		&:nth-child(29n+1) {
-			border-left: solid thin $black;
-		}
+		height: 1.5rem;
+		width: 1.5rem;
+		border: solid thin $black;
 		&.book, &.game, &.movie{
-			opacity: 0.5;
-
 			cursor: pointer;
+
 			@include transition;
 			&:hover{
 				opacity: 1;
@@ -31,13 +26,7 @@
 		&.movie{
 			background: $movie;
 		}
-		&.book.movie{
-			background: mix($book, $movie);
-		}
-		&.book.game{
-			background: mix($book, $game);
-		}
-		&.game.movie{
+		&.book.game, &.book.movie, &.game.movie{
 			background: mix($game, $movie);
 		}
 	}

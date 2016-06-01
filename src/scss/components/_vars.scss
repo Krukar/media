@@ -11,7 +11,7 @@ $book: $yellow;
 $game: $red;
 $movie: $blue;
 
-@mixin transition($speed: 0.25s) {
+@mixin transition($speed: 0.5s) {
 	-webkit-transition: all $speed cubic-bezier(0, 0, 0.5, 1);
 	-moz-transition: all $speed cubic-bezier(0, 0, 0.5, 1);
 	-ms-transition: all $speed cubic-bezier(0, 0, 0.5, 1); 

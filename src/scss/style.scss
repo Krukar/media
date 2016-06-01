@@ -1,11 +1,10 @@
+// Vars/Settings/Mixins
+@import 'components/vars';
+
 // Libraries
 @import 'bourbon';
-
-// Neat settings
-$grid-columns: 30 !default;
 @import 'neat';
 
 // Components
-@import 'components/vars';
 @import 'components/global';
 @import 'components/media';
