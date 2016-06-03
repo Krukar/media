@@ -26,7 +26,7 @@ gulp.task('ts', function () {
 	.pipe(ts({
 		noImplicitAny: true,
 		out: 'main.js',
-		target: 'ES6'
+		target: 'ES5'
 	}))
 	.pipe(gulp.dest('./js'));
 });

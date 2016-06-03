@@ -1,10 +1,5 @@
 #media{
 	display: flex;   
-	&:hover{
-		.book, .game, .movie{
-			opacity: 0.6;
-		}
-	}
 	.day{
 		height: 1.5rem;
 		width: 1.5rem;
@@ -13,9 +8,6 @@
 			cursor: pointer;
 
 			@include transition;
-			&:hover{
-				opacity: 1;
-			}
 		}
 		&.book{
 			background: $book;
@@ -28,6 +20,37 @@
 		}
 		&.book.game, &.book.movie, &.game.movie{
 			background: mix($game, $movie);
+		}
+		&.layerOne{
+			&.book{
+				background: rgba($book, 0.5);
+			}
+			&.game{
+				background: rgba($game, 0.5);
+			}
+			&.movie{
+				background: rgba($movie, 0.5);
+			}
+			&.book.game, &.book.movie, &.game.movie{
+				background: rgba(mix($game, $movie), 0.5);
+			}
+		}
+		&.layerTwo{
+			&.book{
+				background: rgba($book, 0.2);
+			}
+			&.game{
+				background: rgba($game, 0.2);
+			}
+			&.movie{
+				background: rgba($movie, 0.2);
+			}
+			&.book.game, &.book.movie, &.game.movie{
+				background: rgba(mix($game, $movie), 0.2);
+			}
+		}
+		&.layerThree{
+			background: blue !important;
 		}
 	}
 }

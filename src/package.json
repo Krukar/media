@@ -8,6 +8,7 @@
   },
   "author": "Michael Krukar",
   "license": "ISC",
+  "readme": "../README.md",
   "devDependencies": {
     "bourbon": "^4.2.7",
     "bourbon-neat": "^1.7.4",
