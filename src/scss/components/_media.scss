@@ -1,13 +1,12 @@
 #media{
-	display: flex;   
+	display: flex; 
 	.day{
 		height: 1.5rem;
 		width: 1.5rem;
 		border: solid thin $black;
 		&.book, &.game, &.movie{
 			cursor: pointer;
-
-			@include transition;
+			@include tran();
 		}
 		&.book{
 			background: $book;
@@ -19,9 +18,9 @@
 			background: $movie;
 		}
 		&.book.game, &.book.movie, &.game.movie{
-			background: mix($game, $movie);
+			background: $mix;
 		}
-		&.layerOne{
+		&.fade:not(.active){
 			&.book{
 				background: rgba($book, 0.5);
 			}
@@ -32,25 +31,8 @@
 				background: rgba($movie, 0.5);
 			}
 			&.book.game, &.book.movie, &.game.movie{
-				background: rgba(mix($game, $movie), 0.5);
+				background: rgba($mix, 0.5);
 			}
-		}
-		&.layerTwo{
-			&.book{
-				background: rgba($book, 0.2);
-			}
-			&.game{
-				background: rgba($game, 0.2);
-			}
-			&.movie{
-				background: rgba($movie, 0.2);
-			}
-			&.book.game, &.book.movie, &.game.movie{
-				background: rgba(mix($game, $movie), 0.2);
-			}
-		}
-		&.layerThree{
-			background: blue !important;
 		}
 	}
 }

@@ -4,11 +4,8 @@ $(document).ready(function () {
     var total = getWeeks();
     var list = $('#media');
     var weeks = '';
-    var index;
-    var layerOne;
-    var layerTwo;
     for (var i = 0; i < total; i++) {
-        var week = '<li class="week"><ul><li id="' + (i * 7 + 1) + '" class="day monday"></li><li id="' + (i * 7 + 2) + '" class="day tuesday"></li><li id="' + (i * 7 + 3) + '" class="day wednesday"></li><li id="' + (i * 7 + 4) + '" class="day thursday"></li><li id="' + (i * 7 + 5) + '" class="day friday"></li><li id="' + (i * 7 + 6) + '" class="day saturday"></li><li id="' + (i * 7 + 7) + '" class="day sunday"></li></ul></li>';
+        var week = '<li class="week"><ul><li class="day monday"></li><li class="day tuesday"></li><li class="day wednesday"></li><li class="day thursday"></li><li class="day friday"></li><li class="day saturday"></li><li class="day sunday"></li></ul></li>';
         weeks += week;
     }
     list.html(weeks);
@@ -29,43 +26,11 @@ $(document).ready(function () {
             $('li.day:eq(' + dayNumber + ')', list).addClass('movie');
         });
         $('.day.book, .day.game, .day.movie').hover(function () {
-            index = parseInt($(this).attr('id')) - 1;
-            layerOne = [
-                index - 1,
-                index + 1,
-                index - 7,
-                index + 7,
-                index - 8,
-                index + 6,
-                index - 6,
-                index + 8,
-            ];
-            $.each(layerOne, function (i, v) {
-                $('.day').eq(v).addClass('layerOne');
-            });
-            layerTwo = [
-                index - 2,
-                index - 2 - 7,
-                index + 2 + 3,
-                index - 2 - 7 - 7,
-                index + 2 + 3 + 7,
-                index + 2,
-                index + 2 - 7,
-                index + 2 + 7,
-                index + 2 - 7 - 7,
-                index + 2 + 7 + 7,
-                index - 7 - 7,
-                index - 7 - 8,
-                index - 7 - 6,
-                index + 7 + 7,
-                index + 7 + 6,
-                index + 7 + 8 // right bottom
-            ];
-            $.each(layerTwo, function (i, v) {
-                $('.day').eq(v).addClass('layerTwo');
-            });
+            $('.day').addClass('fade');
+            $(this).addClass('active');
         }, function () {
-            $('.day').removeClass('layerOne layerTwo');
+            $('.day').removeClass('fade');
+            $(this).removeClass('active');
         });
     });
 });

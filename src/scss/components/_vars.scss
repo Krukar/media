@@ -1,20 +1,19 @@
-$red: #EB0029;
-$yellow: #F6EB0D;
-$blue: #426FB6;
+$white: #ecf0f1;
+$black: #34495e;
 
-$neutral: #232222;
-$white: #979090;
-$grey: #615E5E;
-$black: #090707;
+$red: #c0392b;
+$green: #2ecc71;
+$blue: #3498db;
 
-$book: $yellow;
+$book: $green;
 $game: $red;
 $movie: $blue;
+$mix: #f1c40f;
 
-@mixin transition($speed: 0.5s) {
-	-webkit-transition: all $speed cubic-bezier(0, 0, 0.5, 1);
-	-moz-transition: all $speed cubic-bezier(0, 0, 0.5, 1);
-	-ms-transition: all $speed cubic-bezier(0, 0, 0.5, 1); 
-	-o-transition: all $speed cubic-bezier(0, 0, 0.5, 1);
-	transition: all $speed cubic-bezier(0, 0, 0.5, 1);
+@mixin tran(){
+	-webkit-transition: all 0.5s cubic-bezier(0, 0, 0.5, 1);
+	-moz-transition: all 0.5s cubic-bezier(0, 0, 0.5, 1);
+	-ms-transition: all 0.5s cubic-bezier(0, 0, 0.5, 1); 
+	-o-transition: all 0.5s cubic-bezier(0, 0, 0.5, 1);
+	transition: all 0.5s cubic-bezier(0, 0, 0.5, 1);
 }
