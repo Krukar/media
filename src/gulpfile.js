@@ -9,7 +9,6 @@ uglify = require('gulp-uglify');
 gulp.task('css', function () {
 	return gulp.src('./scss/style.scss')
 	.pipe(sass({
-		includePaths: [require('bourbon').includePaths, require('bourbon-neat').includePaths],
 		outputStyle: 'compressed'
 	})
 	.on('error', sass.logError))

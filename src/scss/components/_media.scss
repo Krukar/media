@@ -1,9 +1,21 @@
 #media{
-	display: flex; 
+	width: 100%;
+	&.border .day{
+			border: solid thin $black;
+		}
 	.day{
-		height: 1.5rem;
-		width: 1.5rem;
-		border: solid thin $black;
+		width: 10%;
+		float: left;
+		margin: 0;
+		padding-top: 10%;
+		@media(min-width: $medium){
+			width: 5%;
+			padding-top: 5%;
+		}
+		@media(min-width: $large){
+			width: 3.333%;
+			padding-top: 3.333%;
+		}
 		&.book, &.game, &.movie{
 			cursor: pointer;
 			@include tran();
@@ -23,7 +35,7 @@
 		&.fade:not(.active){
 			&.book{
 				background: rgba($book, 0.5);
-			}
+			} 
 			&.game{
 				background: rgba($game, 0.5);
 			}

@@ -9,7 +9,7 @@ $(document).ready(() => {
 	let weeks: string = '';
 
 	for(let i = 0; i < total; i++){
-		let week: string = '<li class="week"><ul><li class="day monday"></li><li class="day tuesday"></li><li class="day wednesday"></li><li class="day thursday"></li><li class="day friday"></li><li class="day saturday"></li><li class="day sunday"></li></ul></li>';
+		let week: string = '<li class="day monday"></li><li class="day tuesday"></li><li class="day wednesday"></li><li class="day thursday"></li><li class="day friday"></li><li class="day saturday"></li><li class="day sunday"></li>';
 		weeks += week;
 	}
 
@@ -43,6 +43,10 @@ $(document).ready(() => {
 			$(this).removeClass('active');
 		});
 
+	});
+
+	list.on('click', function(){
+		$(this).toggleClass('border');
 	});
 
 });

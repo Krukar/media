@@ -9820,7 +9820,7 @@ $(document).ready(function () {
     var list = $('#media');
     var weeks = '';
     for (var i = 0; i < total; i++) {
-        var week = '<li class="week"><ul><li class="day monday"></li><li class="day tuesday"></li><li class="day wednesday"></li><li class="day thursday"></li><li class="day friday"></li><li class="day saturday"></li><li class="day sunday"></li></ul></li>';
+        var week = '<li class="day monday"></li><li class="day tuesday"></li><li class="day wednesday"></li><li class="day thursday"></li><li class="day friday"></li><li class="day saturday"></li><li class="day sunday"></li>';
         weeks += week;
     }
     list.html(weeks);
@@ -9847,6 +9847,9 @@ $(document).ready(function () {
             $('.day').removeClass('fade');
             $(this).removeClass('active');
         });
+    });
+    list.on('click', function () {
+        $(this).toggleClass('border');
     });
 });
 function getWeeks() {

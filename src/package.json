@@ -10,8 +10,6 @@
   "license": "ISC",
   "readme": "../README.md",
   "devDependencies": {
-    "bourbon": "^4.2.7",
-    "bourbon-neat": "^1.7.4",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-sass": "^2.3.1",
