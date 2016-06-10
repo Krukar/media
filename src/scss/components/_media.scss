@@ -1,21 +1,30 @@
 #media{
 	width: 100%;
-	&.border .day{
-			border: solid thin $black;
-		}
-	.day{
-		width: 10%;
+	.year{
 		float: left;
-		margin: 0;
-		padding-top: 10%;
+		width: 100%;
+		padding-right: 1rem;
+		&:last-child{
+			padding-right: 0;
+		}
 		@media(min-width: $medium){
-			width: 5%;
-			padding-top: 5%;
+			width: 50%;
 		}
 		@media(min-width: $large){
-			width: 3.333%;
-			padding-top: 3.333%;
+			width: 25%;
 		}
+	}
+	.disabled{
+		border-left: none;
+	}
+	.day, .disabled{
+		float: left;
+		width: calc(100% / 7);
+		padding-top: 14%;
+		border-bottom: solid thin black;	
+	}
+	.day{
+		border-left: solid thin black;
 		&.book, &.game, &.movie{
 			cursor: pointer;
 			@include tran();
@@ -32,19 +41,32 @@
 		&.book.game, &.book.movie, &.game.movie{
 			background: $mix;
 		}
-		&.fade:not(.active){
-			&.book{
-				background: rgba($book, 0.5);
-			} 
-			&.game{
-				background: rgba($game, 0.5);
-			}
-			&.movie{
-				background: rgba($movie, 0.5);
-			}
-			&.book.game, &.book.movie, &.game.movie{
-				background: rgba($mix, 0.5);
-			}
+		&:nth-child(7n+1){
+			border-left: 0;
 		}
+	}
+}
+
+#year_2013{
+	.day:nth-last-child(-n+2){
+		border-bottom: none;
+	}
+}
+
+#year_2014{
+	.day:nth-last-child(-n+3){
+		border-bottom: none;
+	}
+}
+
+#year_2015{
+	.day:nth-last-child(-n+4){
+		border-bottom: none;
+	}
+}
+
+#year_2016{
+	.day:nth-last-child(-n+6){
+		border-bottom: none;
 	}
 }
