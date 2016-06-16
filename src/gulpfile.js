@@ -3,7 +3,8 @@ sass = require('gulp-sass'),
 autoprefixer = require('gulp-autoprefixer'),
 ts = require('gulp-typescript'),
 concat = require('gulp-concat'),
-uglify = require('gulp-uglify');
+uglify = require('gulp-uglify'),
+rename = require('gulp-rename');
 
 // Sass -> CSS
 gulp.task('css', function () {
@@ -32,14 +33,21 @@ gulp.task('ts', function () {
 
 // Compile JS
 gulp.task('js', ['ts'], function() {
-	return gulp.src(['node_modules/jquery/dist/jquery.js',
-		'node_modules/snapsvg/dist/snap.svg.js',
+	return gulp.src(['./node_modules/jquery/dist/jquery.js',
 		'js/main.js'])
 	.pipe(concat('app.js'))
-	.pipe(gulp.dest('../src'));
+	.pipe(gulp.dest('./'));
+});
+
+gulp.task('min', function() {
+  return gulp.src('app.js')
+    .pipe(uglify())
+    .pipe(rename('app.min.js'))
+    .pipe(gulp.dest('../'));
 });
 
 gulp.task('default', ['css', 'js'], function() {
 	gulp.watch(['./scss/**/*.scss'], ['css']);  
 	gulp.watch(['./ts/**/*.ts'], ['js']);
+	gulp.watch(['app.js'], ['min']);
 });

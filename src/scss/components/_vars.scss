@@ -2,7 +2,7 @@ $medium: 40em;
 $large: 64rem;
 
 $white: #ecf0f1;
-$black: #34495e;
+$black: #2c3e50;
 
 $red: #c0392b;
 $green: #2ecc71;
@@ -12,6 +12,7 @@ $book: $green;
 $game: $red;
 $movie: $blue;
 $mix: #f1c40f;
+$grid: #95a5a6;
 
 @mixin tran(){
 	-webkit-transition: all 0.5s cubic-bezier(0, 0, 0.5, 1);
@@ -19,7 +20,4 @@ $mix: #f1c40f;
 	-ms-transition: all 0.5s cubic-bezier(0, 0, 0.5, 1); 
 	-o-transition: all 0.5s cubic-bezier(0, 0, 0.5, 1);
 	transition: all 0.5s cubic-bezier(0, 0, 0.5, 1);
-}
-	ul.2013.year{
-	background: red;
 }

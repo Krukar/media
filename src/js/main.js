@@ -1,30 +1,33 @@
 ///<reference path="d/jquery.d.ts" />
 'use strict';
-$(document).ready(function () {
+$(function () {
     var media = $('#media');
     $.getJSON('data/media.json', function (data) {
+        var days = $('li', media).not('.disabled');
         data.books.forEach(function (book) {
             var date = new Date(book.date);
             var dayNumber = getDayNumber(date);
-            console.log(dayNumber);
-            $('li.day:eq(' + dayNumber + ')', media).addClass('book');
+            $(days[dayNumber]).addClass('book').attr('data-tip', book.title);
         });
         data.games.forEach(function (game) {
             var date = new Date(game.date);
             var dayNumber = getDayNumber(date);
-            $('li.day:eq(' + dayNumber + ')', media).addClass('game');
+            $(days[dayNumber]).addClass('game').attr('data-tip', game.title);
         });
         data.movies.forEach(function (movie) {
             var date = new Date(movie.date);
             var dayNumber = getDayNumber(date);
-            $('li.day:eq(' + dayNumber + ')', media).addClass('movie');
+            $(days[dayNumber]).addClass('movie').attr('data-tip', movie.title);
         });
-        var items = $('.day.book, .day.game, .day.movie');
+        var items = $('.book, .game, .movie');
         items.hover(function () {
-            items.not(this).addClass('fade');
+            media.addClass('fade');
         }, function () {
-            items.not(this).removeClass('fade');
+            media.removeClass('fade');
         });
+    })
+        .fail(function () {
+        media.html('Something went wrong :(');
     });
 });
 function getDayNumber(date) {
