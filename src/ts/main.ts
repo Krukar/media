@@ -17,13 +17,25 @@ $(function() {
 		data.games.forEach(function(game: any) {
 			let date: Date = new Date(game.date); 
 			let dayNumber: number = getDayNumber(date);
-			$(days[dayNumber]).addClass('game').attr('data-tip', game.title);
+			let attr: any = $(days[dayNumber]).attr('data-tip');
+			if (attr) {
+				$(days[dayNumber]).addClass('game').attr('data-tip', attr + ', ' + game.title);
+			}
+			else {
+				$(days[dayNumber]).addClass('game').attr('data-tip', game.title);
+			}
 		});
 
 		data.movies.forEach(function(movie: any) {
 			let date: Date = new Date(movie.date); 
 			let dayNumber: number = getDayNumber(date);
-			$(days[dayNumber]).addClass('movie').attr('data-tip', movie.title);
+			let attr: any = $(days[dayNumber]).attr('data-tip');
+			if(attr){
+				$(days[dayNumber]).addClass('movie').attr('data-tip', attr + ', ' + movie.title);
+			}
+			else{
+				$(days[dayNumber]).addClass('movie').attr('data-tip', movie.title);
+			}
 		});
 
 		let items: any = $('.book, .game, .movie');

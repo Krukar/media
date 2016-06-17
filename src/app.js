@@ -10050,12 +10050,24 @@ $(function () {
         data.games.forEach(function (game) {
             var date = new Date(game.date);
             var dayNumber = getDayNumber(date);
-            $(days[dayNumber]).addClass('game').attr('data-tip', game.title);
+            var attr = $(days[dayNumber]).attr('data-tip');
+            if (attr) {
+                $(days[dayNumber]).addClass('game').attr('data-tip', attr + ', ' + game.title);
+            }
+            else {
+                $(days[dayNumber]).addClass('game').attr('data-tip', game.title);
+            }
         });
         data.movies.forEach(function (movie) {
             var date = new Date(movie.date);
             var dayNumber = getDayNumber(date);
-            $(days[dayNumber]).addClass('movie').attr('data-tip', movie.title);
+            var attr = $(days[dayNumber]).attr('data-tip');
+            if (attr) {
+                $(days[dayNumber]).addClass('movie').attr('data-tip', attr + ', ' + movie.title);
+            }
+            else {
+                $(days[dayNumber]).addClass('movie').attr('data-tip', movie.title);
+            }
         });
         var items = $('.book, .game, .movie');
         items.hover(function () {

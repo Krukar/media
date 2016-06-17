@@ -1,18 +1,46 @@
 #media{
-	width: 100%;
+	padding: 3rem 0 2rem;
+	overflow: hidden;
 	.year{
 		float: left;
 		width: 100%;
-		padding: 0;
-		padding-left: 2rem;
+		padding: 0 2rem;
 		@media(min-width: $medium){
 			width: 50%;
 		}
 		@media(min-width: $large){
 			width: 25%;
 		}
+		// li:first-child:before{
+		// 	content: 'January';
+		// 	position: absolute;
+		// 	top: 0;
+		// 	left: 0;
+
+		// 	transform: rotate(-90deg);
+		// }
 		li:last-child{
 			border-right: solid thin $grid;
+		}
+		&:first-child{
+			li:nth-last-child(-n+2){
+				border-bottom: none;
+			}
+		}
+		&:nth-child(2){
+			li:nth-last-child(-n+3){
+				border-bottom: none;
+			}
+		}
+		&:nth-child(3){
+			li:nth-last-child(-n+4){
+				border-bottom: none;
+			}
+		}
+		&:nth-child(4){
+			li:nth-last-child(-n+6){
+				border-bottom: none;
+			}
 		}
 	}
 	.label{
@@ -20,18 +48,13 @@
 		top: 0;
 		left: 0;
 	}
-	ul{
-		width: 95%;
-	}
 	li{
 		position: relative;
 		float: left;
 		width: calc(100% /7);
 		padding-top: calc(100% /7);
 		border-bottom: solid thin $grid;	
-		border-left: solid thin $grid;
-
-		cursor: pointer;			
+		border-left: solid thin $grid;			
 		@include tran();
 		&.book{
 			background: $book;
@@ -58,14 +81,15 @@
 			}
 		}
 		&.book, &.game, &.movie{
+			cursor: pointer;
 			&::before {
 				content: attr(data-tip) ;   
 				position:absolute;
 				top: 0;
-				left: 0;
+				left: 50%;
 				padding: 0.25rem 0.5rem;
 				border-radius: 0.125rem;
-				z-index: 10;				
+				z-index: 20;				
 
 				background: $black;
 				color: $white;
@@ -76,11 +100,12 @@
 
 				opacity: 0;
 				@include tran();
+				transform: translate(-50%, 0); 
 				pointer-events: none;
 			}
 			&:hover::before {
 				opacity: 1;
-				transform: translateY(-125%);  
+				transform: translate(-50%, -125%);  
 			}
 		}
 		&:nth-child(7n+1){
