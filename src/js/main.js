@@ -2,6 +2,8 @@
 'use strict';
 $(function () {
     var media = $('#media');
+    var fadeIn = function () { return media.addClass('fade'); };
+    var fadeOut = function () { return media.removeClass('fade'); };
     $.getJSON('data/media.json', function (data) {
         var days = $('li', media).not('.disabled');
         data.books.forEach(function (book) {
@@ -33,12 +35,28 @@ $(function () {
         });
         var items = $('.book, .game, .movie');
         items.hover(function () {
-            media.addClass('fade');
+            fadeIn();
+            media.addClass($(this).attr('class'));
         }, function () {
-            media.removeClass('fade');
+            fadeOut();
+            media.removeClass($(this).attr('class'));
         });
-    })
-        .fail(function () {
+        var nav = $('#nav');
+        $('li', nav).hover(function () {
+            fadeIn();
+            media.addClass($(this).attr('class'));
+        }, function () {
+            fadeOut();
+            media.removeClass($(this).attr('class'));
+        });
+        $('.jan, .feb, .mar, .apr, .may, .jun, .jul, .aug, .sep, .oct, .nov, .dec', media).hover(function () {
+            fadeIn();
+            media.addClass($(this).attr('class').split(' ')[0]);
+        }, function () {
+            fadeOut();
+            media.removeClass($(this).attr('class').split(' ')[0]);
+        });
+    }).fail(function () {
         media.html('Something went wrong :(');
     });
 });

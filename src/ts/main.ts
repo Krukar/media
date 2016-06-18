@@ -5,8 +5,11 @@ $(function() {
 
 	let media: any = $('#media');
 
+	let fadeIn = () => media.addClass('fade');
+	let fadeOut = () => media.removeClass('fade');
+
 	$.getJSON('data/media.json', function(data) {
-		let days: any = $('li', media).not('.disabled');			
+		let days: any = $('li', media).not('.disabled');	
 
 		data.books.forEach(function(book: any) {
 			let date: Date = new Date(book.date); 
@@ -41,16 +44,35 @@ $(function() {
 		let items: any = $('.book, .game, .movie');
 
 		items.hover(function(){
-			media.addClass('fade');
+			fadeIn();
+			media.addClass($(this).attr('class'));
 		}, function(){
-			media.removeClass('fade');
+			fadeOut();
+			media.removeClass($(this).attr('class'));
 		});
 
-	})
-	.fail(function(){
+		let nav: any = $('#nav');
+
+		$('li', nav).hover(function(){
+			fadeIn();
+			media.addClass($(this).attr('class'));
+		}, function(){
+			fadeOut();
+			media.removeClass($(this).attr('class'));
+		});
+
+		$('.jan, .feb, .mar, .apr, .may, .jun, .jul, .aug, .sep, .oct, .nov, .dec', media).hover(function() {
+			fadeIn();
+			media.addClass($(this).attr('class').split(' ')[0])
+		}, function(){
+			fadeOut();
+			media.removeClass($(this).attr('class').split(' ')[0])
+		});
+
+	}).fail(function(){
 		media.html('Something went wrong :(')
 	});
-	
+
 }); 
 
 function getDayNumber(date : Date){

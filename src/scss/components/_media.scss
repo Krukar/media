@@ -1,4 +1,6 @@
 #media{
+	max-width: 80rem;
+	margin: 0 auto;
 	padding: 3rem 0 2rem;
 	overflow: hidden;
 	.year{
@@ -11,17 +13,61 @@
 		@media(min-width: $large){
 			width: 25%;
 		}
-		// li:first-child:before{
-		// 	content: 'January';
-		// 	position: absolute;
-		// 	top: 0;
-		// 	left: 0;
-
-		// 	transform: rotate(-90deg);
-		// }
 		li:last-child{
 			border-right: solid thin $grid;
 		}
+		// Month Labels
+		.jan, .feb, .mar, .apr, .may, .jun, .jul, .aug, .sep, .oct, .nov, .dec{
+			cursor: pointer;
+			&:hover:after{
+				color: $black;
+			}
+			&:after{
+				position: absolute;
+				top: 0.5rem;
+				left: -1rem;
+				color: rgba($black, 0.25);
+
+				@include tran();	
+			}
+		}
+		.jan:after{
+			content: 'J';
+		}
+		.feb:after{
+			content: 'F';
+		}
+		.mar:after{
+			content: 'M';
+		}
+		.apr:after{
+			content: 'A';
+		}
+		.may:after{
+			content: 'M';
+		}
+		.jun:after{
+			content: 'J';
+		}
+		.jul:after{
+			content: 'J';
+		}
+		.aug:after{
+			content: 'A';
+		}
+		.sep:after{
+			content: 'S';
+		}
+		.oct:after{
+			content: 'O';
+		}
+		.nov:after{
+			content: 'N';
+		}
+		.dec:after{
+			content: 'D';
+		}
+		// Remove bottom grid on each year
 		&:first-child{
 			li:nth-last-child(-n+2){
 				border-bottom: none;
@@ -115,18 +161,118 @@
 			border-left: none;
 		}
 	}
+	// Fade everything
 	&.fade{
 		.book{
-			background: rgba($book, 0.5); 
+			background: rgba($book, 0.125);
 		}
 		.game{
-			background: rgba($game, 0.5);
+			background: rgba($game, 0.125);
 		}
 		.movie{
-			background: rgba($movie, 0.5);
+			background: rgba($movie, 0.125);
 		}
 		.book.game, .book.movie, .game.movie{
-			background: rgba($mix, 0.5);
+			background: rgba($mix, 0.125)
+		}
+	}
+	// Unfade type
+	&.book{
+		.book{
+			background: $book;
+		}
+	}
+	&.game{
+		.game{
+			background: $game;
+		}
+	}
+	&.movie{
+		.movie{
+			background: $movie;
+		}
+	}
+	// Unfade days
+	&.mon li:nth-child(7n+1),
+	&.tue li:nth-child(7n+2),
+	&.wed li:nth-child(7n+3), 
+	&.thur li:nth-child(7n+4), 
+	&.fri li:nth-child(7n+5), 
+	&.sat li:nth-child(7n+6), 
+	&.sun li:nth-child(7n+7){
+		&.book{
+			background: $book; 
+		}
+		&.game{
+			background: $game;
+		}
+		&.movie{
+			background: $movie;
+		}
+		&.book.game, &.book.movie, &.game.movie{
+			background: $mix;
+		}
+	}
+	// Unfade months
+	&.jan .year:first-child li:nth-child(n+2):nth-child(-n+32),
+	&.feb .year:first-child li:nth-child(n+33):nth-child(-n+60),
+	&.mar .year:first-child li:nth-child(n+61):nth-child(-n+91),
+	&.apr .year:first-child li:nth-child(n+92):nth-child(-n+121),
+	&.may .year:first-child li:nth-child(n+122):nth-child(-n+152),
+	&.jun .year:first-child li:nth-child(n+153):nth-child(-n+182),
+	&.jul .year:first-child li:nth-child(n+183):nth-child(-n+213),
+	&.aug .year:first-child li:nth-child(n+214):nth-child(-n+243),
+	&.sep .year:first-child li:nth-child(n+244):nth-child(-n+274),
+	&.oct .year:first-child li:nth-child(n+275):nth-child(-n+305),
+	&.nov .year:first-child li:nth-child(n+306):nth-child(-n+335),
+	&.dec .year:first-child li:nth-child(n+336):nth-child(-n+400),
+	&.jan .year:nth-child(2) li:nth-child(n+3):nth-child(-n+33),
+	&.feb .year:nth-child(2) li:nth-child(n+34):nth-child(-n+61),
+	&.mar .year:nth-child(2) li:nth-child(n+62):nth-child(-n+92),
+	&.apr .year:nth-child(2) li:nth-child(n+93):nth-child(-n+122),
+	&.may .year:nth-child(2) li:nth-child(n+123):nth-child(-n+153),
+	&.jun .year:nth-child(2) li:nth-child(n+154):nth-child(-n+183),
+	&.jul .year:nth-child(2) li:nth-child(n+184):nth-child(-n+214),
+	&.aug .year:nth-child(2) li:nth-child(n+215):nth-child(-n+244),
+	&.sep .year:nth-child(2) li:nth-child(n+245):nth-child(-n+275),
+	&.oct .year:nth-child(2) li:nth-child(n+276):nth-child(-n+306),
+	&.nov .year:nth-child(2) li:nth-child(n+307):nth-child(-n+336),
+	&.dec .year:nth-child(2) li:nth-child(n+337):nth-child(-n+400),
+	&.jan .year:nth-child(3) li:nth-child(n+4):nth-child(-n+34),
+	&.feb .year:nth-child(3) li:nth-child(n+35):nth-child(-n+62),
+	&.mar .year:nth-child(3) li:nth-child(n+63):nth-child(-n+93),
+	&.apr .year:nth-child(3) li:nth-child(n+94):nth-child(-n+123),
+	&.may .year:nth-child(3) li:nth-child(n+124):nth-child(-n+154),
+	&.jun .year:nth-child(3) li:nth-child(n+155):nth-child(-n+184),
+	&.jul .year:nth-child(3) li:nth-child(n+185):nth-child(-n+215),
+	&.aug .year:nth-child(3) li:nth-child(n+216):nth-child(-n+245),
+	&.sep .year:nth-child(3) li:nth-child(n+246):nth-child(-n+276),
+	&.oct .year:nth-child(3) li:nth-child(n+277):nth-child(-n+307),
+	&.nov .year:nth-child(3) li:nth-child(n+308):nth-child(-n+337),
+	&.dec .year:nth-child(3) li:nth-child(n+338):nth-child(-n+400),
+	&.jan .year:nth-child(4) li:nth-child(n+5):nth-child(-n+35),
+	&.feb .year:nth-child(4) li:nth-child(n+36):nth-child(-n+63),
+	&.mar .year:nth-child(4) li:nth-child(n+64):nth-child(-n+94),
+	&.apr .year:nth-child(4) li:nth-child(n+95):nth-child(-n+124),
+	&.may .year:nth-child(4) li:nth-child(n+125):nth-child(-n+155),
+	&.jun .year:nth-child(4) li:nth-child(n+156):nth-child(-n+185),
+	&.jul .year:nth-child(4) li:nth-child(n+186):nth-child(-n+216),
+	&.aug .year:nth-child(4) li:nth-child(n+217):nth-child(-n+246),
+	&.sep .year:nth-child(4) li:nth-child(n+247):nth-child(-n+277),
+	&.oct .year:nth-child(4) li:nth-child(n+278):nth-child(-n+308),
+	&.nov .year:nth-child(4) li:nth-child(n+309):nth-child(-n+338),
+	&.dec .year:nth-child(4) li:nth-child(n+339):nth-child(-n+400){
+		&.book{
+			background: $book; 
+		}
+		&.game{
+			background: $game;
+		}
+		&.movie{
+			background: $movie;
+		}
+		&.book.game, &.book.movie, &.game.movie{
+			background: $mix;
 		}
 	}
 }

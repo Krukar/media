@@ -1,8 +1,12 @@
 #nav{
 	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 	height: 2rem;
 	width: 100%;
-	top: 0;
+	max-width: 80rem;
+	margin: 0 auto;
 	z-index: 10;
 	border-bottom: solid thin $grid;
 
