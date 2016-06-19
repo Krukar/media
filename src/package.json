@@ -7,7 +7,7 @@
     "url": "git+https://github.com/Krukar/michaelkrukar.com-media-consumption.git"
   },
   "author": "Michael Krukar",
-  "license": "ISC",
+  "license": "MIT",
   "readme": "../README.md",
   "devDependencies": {
     "bourbon": "^4.2.7",
