@@ -1,11 +1,24 @@
 #media{
 	max-width: 80rem;
 	margin: 0 auto;
+	padding: 3rem 0 1.5rem;
 	overflow: hidden;
+	.label{
+		float: left;
+		width: 100%;
+
+		text-align: center;
+		@media(min-width: $medium){
+			width: 50%;
+		}
+		@media(min-width: $large){
+			width: 25%;
+		}
+	}
 	.year{
 		float: left;
 		width: 100%;
-		padding: 3rem 2rem;
+		padding: 0 2rem;
 		@media(min-width: $medium){
 			width: 50%;
 		}
@@ -18,9 +31,6 @@
 		// Month Labels
 		.jan, .feb, .mar, .apr, .may, .jun, .jul, .aug, .sep, .oct, .nov, .dec{
 			cursor: pointer;
-			&:hover:after{
-				color: $black;
-			}
 			&:after{
 				position: absolute;
 				top: 0.75rem;
@@ -148,27 +158,6 @@
 				transform: translate(-50%, -125%);  
 			}
 		}
-		// Change the position of day tooltips
-		&:nth-child(7n+1).book,
-		&:nth-child(7n+1).game,
-		&:nth-child(7n+1).movie{
-			&::before{
-				left: 125%;
-			}
-			&:hover::before {
-				transform: translate(0, 0);
-			}	
-		}
-		&:nth-child(7n+7).book,
-		&:nth-child(7n+7).game,
-		&:nth-child(7n+7).movie{
-			&::before{
-				left: 0;
-			}
-			&:hover::before {
-				transform: translate(-105%, 0);
-			}	
-		}
 		&:nth-child(7n+1){
 			border-left: 0;
 		}
@@ -288,6 +277,89 @@
 		}
 		&.book.game, &.book.movie, &.game.movie{
 			background: $mix;
+		}
+	}
+	// Highlight selected month
+	&.jan .jan:after,
+	&.feb .feb:after,
+	&.mar .mar:after,
+	&.apr .apr:after,
+	&.may .may:after,
+	&.jun .jun:after,
+	&.jul .jul:after,
+	&.aug .aug:after,
+	&.sep .sep:after,
+	&.oct .oct:after,
+	&.nov .nov:after,
+	&.dec .dec:after{
+		color: $black;
+	}
+	// Change the position of day tooltips
+	// On small the first and last of every year
+	@media(max-width: $medium){
+		li:nth-child(7n+1).book,
+		li:nth-child(7n+1).game,
+		li:nth-child(7n+1).movie{
+			&::before{
+				left: 125%;
+			}
+			&:hover::before {
+				transform: translate(0, 0);
+			}	
+		}
+		li:nth-child(7n+7).book,
+		li:nth-child(7n+7).game,
+		li:nth-child(7n+7).movie{
+			&::before{
+				left: 0%
+			}
+			&:hover::before {
+				transform: translate(-105%, 0);
+			}	
+		}
+	}
+	@media(min-width: $medium){
+		.year:nth-child(odd) li:nth-child(7n+1).book,
+		.year:nth-child(odd) li:nth-child(7n+1).game,
+		.year:nth-child(odd) li:nth-child(7n+1).movie{
+			&::before{
+				left: 125%;
+			}
+			&:hover::before {
+				transform: translate(0, 0);
+			}	
+		}
+		.year:nth-child(even) li:nth-child(7n+7).book,
+		.year:nth-child(even) li:nth-child(7n+7).game,
+		.year:nth-child(even) li:nth-child(7n+7).movie{
+			&::before{
+				left: 0%
+			}
+			&:hover::before {
+				transform: translate(-105%, 0);
+			}	
+		}
+	}
+	@media(min-width: $large){
+		.year:first-child li:nth-child(7n+1).book,
+		.year:first-child li:nth-child(7n+1).game,
+		.year:first-child li:nth-child(7n+1).movie{
+			&::before{
+				left: 125%;
+			}
+			&:hover::before {
+				transform: translate(0, 0);
+			}	
+		}
+		.year:last-child li:nth-child(7n+7).book,
+		.year:last-child li:nth-child(7n+7).game,
+		.year:last-child li:nth-child(7n+7).movie{
+			&::before{
+				left: 0%
+			}
+			&:hover::before {
+				transform: translate(-105%, 0);
+			}	
 		}
 	}
 }

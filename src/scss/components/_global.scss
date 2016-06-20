@@ -19,3 +19,28 @@ ul{
 
 	list-style-type: none;
 }
+
+#info{
+	position: fixed;
+	bottom: 2rem;
+	right: 2rem;
+	padding: 0.5rem;
+	border-radius: 0.125rem;
+	z-index: 30;
+
+	background: $black;
+	color: $white;
+
+	font-size: 1.5rem;
+	font-weight: bold;
+
+	cursor: pointer;
+	@include tran;
+	&:hover{
+		color: $grid;
+	}
+}
+
+#nav, #media{
+	min-width: 25rem;
+}

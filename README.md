@@ -65,6 +65,10 @@ Jun 19, 2016
 * Fixed Firefox version (invalid Date)
 * Added information
 
+Jun 19, 2016
+
+* RC1
+
 ## Future Release
 
 * Database implementation

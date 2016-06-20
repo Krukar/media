@@ -10042,6 +10042,7 @@ $(function () {
     var media = $('#media');
     var fadeIn = function () { return media.addClass('fade'); };
     var fadeOut = function () { return media.removeClass('fade'); };
+    $.ajaxSetup({ cache: false });
     $.getJSON('data/media.json', function (data) {
         var days = $('li', media).not('.disabled');
         data.books.forEach(function (book) {
@@ -10093,6 +10094,9 @@ $(function () {
         }, function () {
             fadeOut();
             media.removeClass($(this).attr('class').split(' ')[0]);
+        });
+        $('#info').on('click', function () {
+            nav.toggleClass('open');
         });
     }).fail(function () {
         media.html('Something went wrong :(');

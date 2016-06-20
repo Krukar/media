@@ -8,6 +8,7 @@ $(function() {
 	let fadeIn = () => media.addClass('fade');
 	let fadeOut = () => media.removeClass('fade');
 
+	$.ajaxSetup({ cache: false });
 	$.getJSON('data/media.json', function(data) {
 		let days: any = $('li', media).not('.disabled');	
 
@@ -67,6 +68,10 @@ $(function() {
 		}, function(){
 			fadeOut();
 			media.removeClass($(this).attr('class').split(' ')[0])
+		});
+
+		$('#info').on('click', function() {
+			nav.toggleClass('open');
 		});
 
 	}).fail(function(){

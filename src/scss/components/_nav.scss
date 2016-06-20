@@ -3,28 +3,32 @@
 	top: 0;
 	left: 0;
 	right: 0;
-	height: 2rem;
 	width: 100%;
 	max-width: 80rem;
 	margin: 0 auto;
 	z-index: 10;
-	border-bottom: solid thin $grid;
-
 	background: $white;
+
+	text-align: center;
+	transform: translateY(-80%); 
+	@include tran();
+	&.open{
+		transform: translateY(0%); 
+	}
 	.label{
 		float: left;
 		width: 100%;
-		padding: 0 2rem;
+		padding: 0.5rem 2rem;
 
 		text-align: center;
 		@media(max-width: $medium){
-			&:nth-child(n+2){
+			&:nth-of-type(n+2){
 				display: none;
 			}
 		}
 		@media(min-width: $medium) and (max-width: $large){
 			width: 50%;
-			&:nth-child(n+3){
+			&:nth-of-type(n+3){
 				display: none;
 			}
 		}
