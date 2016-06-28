@@ -1,6 +1,6 @@
 {
   "name": "mk-media-consumption",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "description": "MichaelKrukar.com - Media consumption data visualization",
   "repository": {
     "type": "git",
@@ -10,8 +10,6 @@
   "license": "MIT",
   "readme": "../README.md",
   "devDependencies": {
-    "bourbon": "^4.2.7",
-    "bourbon-neat": "^1.7.4",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-rename": "^1.2.2",

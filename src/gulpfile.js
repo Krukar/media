@@ -40,10 +40,14 @@ gulp.task('js', ['ts'], function() {
 });
 
 gulp.task('min', function() {
-  return gulp.src('app.js')
-    .pipe(uglify())
-    .pipe(rename('app.min.js'))
-    .pipe(gulp.dest('../'));
+	return gulp.src('app.js')
+	.pipe(uglify({
+		compress:{
+			drop_console: true
+		}
+	}))
+	.pipe(rename('app.min.js'))
+	.pipe(gulp.dest('../'));
 });
 
 gulp.task('default', ['css', 'js'], function() {

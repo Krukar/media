@@ -4,15 +4,26 @@ body{
 	line-height: 1.2em;
 }
 
-h1{
-	font-size: 2rem;
+h1, h2{
 	text-transform: uppercase;
 
 	color: $black;
+}
+
+h1{
+	font-size: 2rem;	
 	@media(min-width: $medium){
 		font-size: 2rem;
 	}
 	@media(min-width: $large){
 		font-size: 3rem;
+	}
+}
+
+h2{
+	font-size: 1.5rem;
+	margin-bottom: 2rem;
+	@media(min-width: $medium){
+		font-size: 1.5rem;
 	}
 }
