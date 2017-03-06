@@ -5,7 +5,7 @@ $(function () {
     var fadeIn = function () { return media.addClass('fade'); };
     var fadeOut = function () { return media.removeClass('fade'); };
     $.ajaxSetup({ cache: false });
-    $.getJSON('data/media.json', function (data) {
+    $.getJSON('http://krapi.michaelkrukar.com/data/media.json', function (data) {
         var days = $('li', media).not('.disabled');
         data.books.forEach(function (book) {
             var date = new Date(book.date);

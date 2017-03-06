@@ -9,17 +9,17 @@ $(function() {
 	let fadeOut = () => media.removeClass('fade');
 
 	$.ajaxSetup({ cache: false });
-	$.getJSON('data/media.json', function(data) {
-		let days: any = $('li', media).not('.disabled');	
+	$.getJSON('http://krapi.michaelkrukar.com/data/media.json', function(data) {
+		let days: any = $('li', media).not('.disabled');
 
 		data.books.forEach(function(book: any) {
-			let date: Date = new Date(book.date); 
+			let date: Date = new Date(book.date);
 			let dayNumber: number = getDayNumber(date);
 			$(days[dayNumber]).addClass('book').attr('data-tip', book.title);
 		});
 
 		data.games.forEach(function(game: any) {
-			let date: Date = new Date(game.date); 
+			let date: Date = new Date(game.date);
 			let dayNumber: number = getDayNumber(date);
 			let attr: any = $(days[dayNumber]).attr('data-tip');
 			if (attr) {
@@ -31,7 +31,7 @@ $(function() {
 		});
 
 		data.movies.forEach(function(movie: any) {
-			let date: Date = new Date(movie.date); 
+			let date: Date = new Date(movie.date);
 			let dayNumber: number = getDayNumber(date);
 			let attr: any = $(days[dayNumber]).attr('data-tip');
 			if(attr){
@@ -78,11 +78,11 @@ $(function() {
 		media.html('Something went wrong :(')
 	});
 
-}); 
+});
 
 function getDayNumber(date : Date){
 	let day: number = Math.round(Math.abs((new Date(2013, 0, 1).getTime() - date.getTime()) / (24 * 60 * 60 * 1000)));
 	return day;
 }
 
-console.log('main.ts');   
+console.log('main.ts');
